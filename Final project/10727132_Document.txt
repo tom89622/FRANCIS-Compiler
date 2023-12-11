@@ -1,0 +1,18 @@
+資工三甲 10727132 張任宏
+
+開發平台 : windows 10
+使用開發環境 : DEV C
+所選擇的組合語言( x86, SIC ) : Francis
+說明你的程式設計(功\能，流程，使用的data structure) :
+功能 : 將input所給的.txt給轉換成中間碼
+流程 : 先將input所給的.txt一行一行的讀入做處理。
+	首先將該行做Lexical Analysis,找出該行所有token再進行下一步驟，
+	看每一個token分辨是為table1或table2等...... 	
+ 	再進入Syntax analysis依文法檢查
+	若文法正確無誤就翻成中間碼
+使用的data structure : 使用一class 方便存取table
+			使用一struct方便記錄輸出檔案
+			剩下的都使用各function來實作。
+			若類似的功能就合併成同一function實作。
+	  
+未完成的功能 : 1.詳細且周全的Syntax Analysis。

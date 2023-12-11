@@ -1,0 +1,70 @@
+The Syntactical Rules of FRANCIS
+<program>:=<main program><subroutine deck>
+<main program>:=<program heading><block>ENP;
+<program heading>:=PROGRAM<identifier>;
+<identifier>:=<letter>{<letter>|<digit>}
+<block>:=<array declaration part>
+		<variable declaration part>
+		<label declaration part>
+		<statement part>
+<array declaration part>:={DIMENSION<array declaration>;}
+<array declaration>:=<type>:<subscripted variable>{,
+					 <subscripted variable>}
+<subscripted variable>:=<identifier>(<unsigned integer>
+						{,<unsigned integer>})
+<unsinged integer>:=<digit>{<digit>}
+<type>:=INTEGER|REAL|BOOLEAN
+<variable declaration part>:={VARIABLE<variable declaration>;}
+<variable declaration>:=<type>:<identifier>{,<identifier>}
+<label declaration part>:={LABEL<label>{,<label>};
+<label>:=<identifier>
+<statement part>:=<statement>{<statement>}
+<statement>:=<unlabelled statement>;|
+			<label><unlabelled statement>;
+<unlabelled statement>:=<statement I>|<if statement>
+ 
+<statement I>:=<empty statement>|<assign statement>
+			   <call statement>|<IO statement>|
+			   <go to statement>
+<empty statement>:=
+<assign statement>:=<variable>=<expression>
+<variable>:=<identifier>|<idnetifier>(<unsigned integer>|<identifier>
+           {,<unsigned integer>| <identifier> })
+<expression>:=<simple expression>|<simple expression>
+			  <relational operator><simple expression>
+<relational operator> := EQ|NE|GT|GE|LT|LE
+<simple expression>:=<term>|<sign><term>|
+						<simple expression><adding operator><term>
+<adding operator>:=  +|-|OR
+<term>:=<factor>|<term><multiplying operator><factor>
+<multiplying operator>:=*|/|AND|↑
+<factor>:=<variable>|<unsigned constant>|(<expression>)
+<unsigned constant>:=<unsigned number>|<constant identifier>
+<unsigned number>:=<unsigned integer>|<unsigned real>
+<unsigned real>:=<unsigned integer>.{<digit>}
+<sign>:=  +|-
+<constant identifier>:=<identifier>
+<call statement>:=CALL<subroutine identifier>(<argument>
+						{,<argument>})
+<subroutine identifier>:=<idnetifier>
+<argument>:= <identifier>|<constant>
+ 
+<constant>:=<unsigned constant>|<sign><unsigned constant>
+<IO statement>:=INPUT<variable>
+				OUTPUT<variable>
+<number size>:=<unsigned integer>
+<go to statement>:=GTO<label>
+<if statement>:=IF <condition>THEN<statement I>|
+				IF<condition>THEN<statement I>
+							ELSE<statement I>
+<condition>:=<condition variable><relations><condition variable>
+<condition variable>:=<variable>|<constant>
+<relations>:=<relational operator>|OR|AND
+<subroutine deck>:={<subroutine declaration>}
+<subroutine declaration>:=<subroutine heading><block>ENS;
+<subroutine heading>:=SUBROUTINE<identifier>(<parameter group>
+						{,<parameter group>});
+<parameter group>:=<type>:<parameter>{,<parameter>}
+<parameter>:=<identifier>|<array>
+<array>:=<array identifier>(  )
+<array identifier>:=<identifier>
